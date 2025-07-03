@@ -5,6 +5,35 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>赤井大祐 Daisuke Akai - 編集者/ライター</title>
     <style>
+        /* ブロググリッド */
+.blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.blog-card {
+    background: #f8f8f8;
+    padding: 30px;
+    border-radius: 10px;
+    transition: transform 0.3s;
+}
+
+.blog-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+.blog-card h3 {
+    margin-bottom: 10px;
+}
+
+.blog-card .date {
+    color: #999;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
         * {
             margin: 0;
             padding: 0;
@@ -348,16 +377,23 @@
     </section>
 
     <!-- ブログセクション -->
-    <section id="blog" class="section">
-        <div class="container fade-in">
-            <h2>Blog</h2>
-            <p class="section-subtitle">日々の考察、取材メモ、読書記録など</p>
-            
+<!-- ブログセクション -->
+<section id="blog" class="section">
+    <div class="container fade-in">
+        <h2>Blog</h2>
+        <p class="section-subtitle">日々の考察、取材メモ、読書記録など</p>
         
-<iframe src="https://www.notion.site/daaaisuuukeee/225bb3197d068053a158dc270d472349?v=225bb3197d06808996a9000c5fba5237" scrolling="auto"></iframe>
-            </div>
+        <!-- ブログ記事が表示されるエリア -->
+        <div id="blog-posts" class="blog-grid">
+            <p style="text-align: center; padding: 40px;">記事を読み込み中...</p>
         </div>
-    </section>
+        
+        <!-- 管理者用リンク -->
+        <div style="text-align: center; margin-top: 40px;">
+            <a href="/admin/" style="color: #999; font-size: 14px;">管理画面</a>
+        </div>
+    </div>
+</section>
 
     <!-- お問い合わせセクション -->
     <section id="contact" class="section">
