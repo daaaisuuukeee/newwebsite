@@ -1,0 +1,35 @@
+backend:
+  name: github
+  repo: あなたのGitHubユーザー名/リポジトリ名  # 例: daaaisuuukeee/my-website
+  branch: main
+
+media_folder: "images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "blog"
+    label: "ブログ"
+    folder: "_posts/blog"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "タイトル", name: "title", widget: "string"}
+      - {label: "公開日", name: "date", widget: "datetime"}
+      - {label: "サムネイル画像", name: "thumbnail", widget: "image", required: false}
+      - {label: "概要", name: "description", widget: "text"}
+      - {label: "本文", name: "body", widget: "markdown"}
+      - {label: "カテゴリ", name: "category", widget: "select", options: ["日記", "考察", "読書", "その他"]}
+
+  - name: "portfolio"
+    label: "ポートフォリオ"
+    folder: "_posts/portfolio"
+    create: true
+    slug: "{{slug}}"
+    fields:
+      - {label: "プロジェクト名", name: "title", widget: "string"}
+      - {label: "公開日", name: "date", widget: "datetime"}
+      - {label: "メイン画像", name: "image", widget: "image"}
+      - {label: "説明", name: "description", widget: "text"}
+      - {label: "URL", name: "projectUrl", widget: "string", required: false}
+      - {label: "掲載媒体", name: "media", widget: "select", options: ["Web", "雑誌", "書籍", "その他"]}
+      - {label: "詳細", name: "body", widget: "markdown"}
