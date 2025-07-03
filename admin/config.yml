@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: あなたのGitHubユーザー名/リポジトリ名  # 例: daaaisuuukeee/my-website
+  repo: daaaisuuukeee/newwebsite
   branch: main
 
 media_folder: "images/uploads"
