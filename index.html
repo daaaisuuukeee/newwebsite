@@ -422,5 +422,43 @@
             document.querySelector('#home .fade-in').classList.add('visible');
         });
     </script>
+    <!-- ブログとポートフォリオを動的に読み込むスクリプト -->
+<script>
+// ブログ記事を表示する関数
+async function loadBlogPosts() {
+    try {
+        // GitHubから記事一覧を取得
+        const response = await fetch('https://api.github.com/repos/あなたのユーザー名/リポジトリ名/contents/_posts/blog');
+        const files = await response.json();
+        
+        const blogContainer = document.getElementById('blog-posts');
+        blogContainer.innerHTML = '';
+        
+        // 各記事を処理
+        for (const file of files.slice(0, 6)) { // 最新6件を表示
+            const postResponse = await fetch(file.download_url);
+            const postContent = await postResponse.text();
+            
+            // 簡易的なパース（実際はもっと複雑になります）
+            const title = postContent.match(/title: "(.*?)"/)?.[1] || 'タイトルなし';
+            const date = postContent.match(/date: (.*?)\n/)?.[1] || '';
+            const description = postContent.match(/description: "(.*?)"/)?.[1] || '';
+            
+            blogContainer.innerHTML += `
+                <div class="blog-card">
+                    <h3>${title}</h3>
+                    <p class="date">${date}</p>
+                    <p>${description}</p>
+                </div>
+            `;
+        }
+    } catch (error) {
+        console.error('ブログ読み込みエラー:', error);
+    }
+}
+
+// ページ読み込み時に実行
+document.addEventListener('DOMContentLoaded', loadBlogPosts);
+</script>
 </body>
 </html>
